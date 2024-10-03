@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.menu {
+    background-color: #1A202C;
+    color: #fff;
+    height: 40px;
+}
+
+.menu__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.menu__links {
+    height: 100%;
+    transition: transform .5s;
+    display: flex;
+}
+
+.menu__item {
+    list-style: none;
+    position: relative;
+    height: 100%;
+    --clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+    --transform: rotate(-90deg);
+}
+
+.menu__item:hover {
+    --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    --transform: rotate(0);
+}
+
+.menu__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 30px;
+    height: 100%;
+    align-items: center;
+}
+
+.menu__link:hover {
+    background-color: #5e7094;
+}
+
+.menu__arrow {
+    transform: var(--transform);
+    transition: transform .3s;
+    display: block;
+    margin-left: 3px;
+}
+
+.menu__nesting {
+    transition:clip-path .3s;
+    clip-path: var(--clip);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: max-content;
+    transform: translateY(100%);
+    background-color: #1A202C;
+    border: thin solid #1A202C;
+    border-radius: 0.75rem;
+}
+
+.configuracion {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.configuracion .cb1 {margin: 2px; padding: 2px;}
+.configuracion .cb2 {margin: 2px; padding: 2px;}
+.configuracion .cb3 {margin: 2px; padding: 2px;}
+.configuracion .txt {margin: 2px; width: 318px;}
+
+.configuracion .cb1:hover,.cb2:hover,.cb3:hover,.s1:hover,.s2:hover,.s3:hover {
+    background-color: #798499;
+    border-radius: 0.50rem;
+}
+
+.lista1 {
+    z-index: 50;
+    position: relative;
+    min-height: "100vh";
+}
+  
+.loader1 {
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin: auto;
+}
+  
+.error1 {
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    width: max-content;
+    margin: auto;
+}

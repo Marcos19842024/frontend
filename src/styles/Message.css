@@ -1,0 +1,11 @@
+.box {
+    padding: 2px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 0.50rem;
+}
+
+.text {
+    color: #fff
+}

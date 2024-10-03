@@ -1,0 +1,41 @@
+.body {
+    text-align: center;
+    color: #1A202C;
+    margin: 10px;
+}
+
+.download:hover {
+    color: #5e7094;
+}
+
+.table {
+    display: grid;
+    grid-template-areas:
+        "ts nts"
+        "t1 t2";
+    background: #fff;
+    color:rgb(3, 119, 165);
+    gap: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    justify-self: space-between;
+}
+
+.table .table1 {
+    grid-area: t1;
+}
+
+.table .table2 {
+    grid-area: t2;
+}
+
+.table .sending {
+    grid-area: ts;
+}
+
+.table .notsending {
+    grid-area: nts;
+}
