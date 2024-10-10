@@ -4,7 +4,7 @@ import { Document, Text, Page, View, StyleSheet } from '@react-pdf/renderer';
 const Docupdf = ({data1,data2}) => {
     const sending = data1;
     const notsending = data2;
-
+    
     const styles = StyleSheet.create({
         page:{
             padding: '20px',

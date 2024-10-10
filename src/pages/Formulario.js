@@ -20,43 +20,29 @@ const Formulario = ({smo,imo,ia,msjo}) => {
   const [loading3, setLoading3] = useState(false);
   const [archivos, setArchivos] = useState([]);
   const {addNewSend, addNewNotSend} = useSendingContext();
-  let send = "http://localhost:3001/send";
-  let upload = "http://localhost:3001/upload";
-  let del = "http://localhost:3001/delete/";
+  const URL = process.env.REACT_APP_URL;
+  let send = URL + "send";
+  let upload = URL + "upload";
+  let del = URL + "delete/";
 
   React.useEffect(() => {
-    const titles = ["CLIENTE","TELÉFONO 1","MASCOTA","TIPO DE RECORDATORIO","VACUNA","PRÓXIMA FECHA"];
     const input = document.getElementById('inputfile');
     const div = document.getElementById("div");
 
     setLoading1(true);
     try {
       input.addEventListener("change",async function() {
-        const content = await readXlsxFile(input.files[0])
-
-        if (content[0][0] !== titles[0] ||
-            content[0][1] !== titles[1] ||
-            content[0][2] !== titles[2] ||
-            content[0][3] !== titles[3] ||
-            content[0][4] !== titles[4] ||
-            content[0][5] !== titles[5]) {
-          setError1(`Error: La hoja de Excel no contiene la información requerida. (${titles})`);
+        const content = DataElement(await readXlsxFile(input.files[0]))
+        if (content[1].length  > 0) {
+          setClientes(content[1]);
+          setInfo(input.files[0].name);
+          div.remove();
+        } else {
+          setError1(content[0]);
           setClientes(null);
           input.value="";
+          setTimeout(() => setError1(null),5000);
         }
-        else {
-          if (content.length <= 1) {
-            setError1(`Error: La hoja de Excel no contiene información`);
-            setClientes(null);
-            input.value="";
-          }
-          else {
-            setClientes(DataElement(content));
-            setInfo(input.files[0].name);
-            div.remove();
-          }
-        }
-        setTimeout(() => setError1(null),5000);
       });
     } catch (err) {
       setError1(`Error ${err}`);
@@ -266,17 +252,13 @@ const Formulario = ({smo,imo,ia,msjo}) => {
           <span><i className="fa fa-cloud-upload fa-3x"></i></span>
           <p>Click To Upload List</p>
         </label>
-        <div className="loader">
-          {loading1 && <Loader />}
-        </div>
-        <div className="error">
-          {error1 &&
-            <Message
-              msg={error1}
-              bgColor="#dc3545"
-            />
-          }
-        </div>
+        {loading1 && <Loader />}
+        {error1 &&
+          <Message
+            msg={error1}
+            bgColor="#dc3545"
+          />
+        }
       </div>
       <div className="lista">
         {info && (

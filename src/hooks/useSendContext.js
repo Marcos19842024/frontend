@@ -5,12 +5,14 @@ export const SendingContextProvider = sendingContext.Provider;
 export const useSendingContext = () => useContext(sendingContext);
 
 export const SendingProvider = ({ children }) => {
+  const [viewpdf, setView] = useState(false);
   const [sending, setSending] = useState([]);
   const [notsending, setNotSending] = useState([]);
+  const ViewPdf = (view) => setView(view);
   const addNewSend = (send) => setSending((prevState) => [...prevState, send]);
   const addNewNotSend = (send) => setNotSending((prevState) => [...prevState, send]);
 
   return (
-    <SendingContextProvider value={{sending,notsending,addNewSend,addNewNotSend}}>{children}</SendingContextProvider>
+    <SendingContextProvider value={{viewpdf,sending,notsending,ViewPdf,addNewSend,addNewNotSend}}>{children}</SendingContextProvider>
   );
 };
