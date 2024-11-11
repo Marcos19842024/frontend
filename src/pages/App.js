@@ -5,7 +5,8 @@ import { useModal } from "../hooks/useModal";
 import { useSendingContext } from "../hooks/useSendContext";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import Formulario from "./Formulario";
+import Formulario1 from "./Formulario1";
+import Formulario2 from "./Formulario2";
 import Modal from "../components/Modal";
 import ResultsTable from "./ResultsTable";
 
@@ -15,14 +16,14 @@ function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [checkbox, setCheckbox] = useState(false);
+  const [ml, setMl] = useState(false);
+  const [ia, setIa] = useState(false);
   const [smo, setSmo] = useState(false);
   const [imo, setImo] = useState(false);
-  const [ia, setIa] = useState(false);
   const [msjo, setMsjo] = useState("");
   const URL = process.env.REACT_APP_URL;
-  let qr = URL + "terminal/";
   let status = URL + "status";
-  
+
   React.useEffect(() => {
     async function fetchData() {
       setLoading(true);
@@ -44,7 +45,7 @@ function App() {
       setLoading(false);
     }
     fetchData();
-  },[qr, status]);
+  },[status]);
 
   React.useEffect(() => {
     if (smo || imo) {
@@ -87,12 +88,17 @@ function App() {
                 <Modal
                   isOpen={isOpenForm}
                   closeModal={closeModalForm}>
-                  <Formulario
-                    smo={smo}
-                    imo={imo}
-                    ia={ia}
-                    msjo={msjo}
-                  />
+                  {ml ?
+                    <Formulario2
+                      ia={ia}
+                    /> :
+                    <Formulario1
+                      smo={smo}
+                      imo={imo}
+                      ia={ia}
+                      msjo={msjo}
+                    />
+                  }
                 </Modal>
               </li>
               <li
@@ -110,9 +116,35 @@ function App() {
                   <div className="configuracion">
                     <label
                       className="s1"
-                      htmlFor="Smo">
+                      htmlFor="Ml">
                       <input
                         className="cb1"
+                        id="Ml"
+                        type="checkbox"
+                        name="Ml"
+                        onChange={(e) => {
+                          setMl(e.target.checked)
+                        }}
+                      />Mensaje libre
+                    </label>
+                    <label
+                      className="s2"
+                      htmlFor="Ia">
+                      <input
+                        className="cb2"
+                        id="Ia"
+                        type="checkbox"
+                        name="Ia"
+                        onChange={(e) => {
+                          setIa(e.target.checked)
+                        }}
+                      />Incluir adjuntos
+                    </label>
+                    <label
+                      className="s3"
+                      htmlFor="Smo">
+                      <input
+                        className="cb3"
                         id="Smo"
                         type="checkbox"
                         name="Smo"
@@ -121,13 +153,13 @@ function App() {
                           document.getElementById("Imo").checked=false
                           setImo(false)
                         }}
-                      />Solo msj. opcional
+                      />Solo mensaje opcional
                     </label>
                     <label
-                      className="s2"
+                      className="s4"
                       htmlFor="Imo">
                       <input
-                        className="cb2"
+                        className="cb4"
                         id="Imo"
                         type="checkbox"
                         name="Imo"
@@ -136,21 +168,8 @@ function App() {
                           document.getElementById("Smo").checked=false
                           setSmo(false)
                         }}
-                      />Incluir msj. opcional
+                      />Incluir mensaje opcional
                     </label>
-                    <label
-                      className="s3"
-                      htmlFor="Ia">
-                      <input
-                        className="cb3"
-                        id="Ia"
-                        type="checkbox"
-                        name="Ia"
-                        onChange={(e) => {
-                          setIa(e.target.checked)
-                        }}
-                      />Incluir adjuntos
-                      </label>
                     {checkbox && (
                       <textarea
                         className="txt"
@@ -170,10 +189,7 @@ function App() {
               <li className="menu__item">
                 <label
                   className="menu__link"
-                  id="login"
-                  onClick={(e) => {
-                    window.open(qr,'_blank','width=1000,height=1000')
-                  }}>Check connection...
+                  id="login">Check connection...
                 </label>
               </li>
             </ul>
