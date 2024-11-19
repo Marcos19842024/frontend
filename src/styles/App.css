@@ -57,6 +57,10 @@ body {
     background-color: #5e7094;
 }
 
+.logo {
+    display: block;
+}
+
 .menu__arrow {
     transform: var(--transform);
     transition: transform .3s;
