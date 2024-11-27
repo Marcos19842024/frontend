@@ -13,7 +13,7 @@ textarea {
   font-family: inherit;
   resize: none;
   width: 345px;
-  height: 200px;
+  height: 130px;
   color: #0376a3;
   padding: 0.5rem 0.5rem;
 }
@@ -261,4 +261,13 @@ select {
   top: 20%;
   width: 100%;
   margin: auto;
+}
+
+.cb1 {margin-left: 4px; margin-right: 10px;}
+.s1 {margin-left: 4px; margin-right: 4px; margin-top: 8px; padding: 2px;}
+
+.cb1:hover,
+.s1:hover {
+    background-color: #798499;
+    border-radius: 0.25rem;
 }

@@ -90,17 +90,15 @@ body {
     font-weight: 100;
 }
 
-.configuracion .cb1 {margin-left: 4px; margin-right: 10px;}
-.configuracion .cb2 {margin-left: 4px; margin-right: 10px;}
-.configuracion .cb3 {margin-left: 4px; margin-right: 10px;}
-.configuracion .cb4 {margin-left: 4px; margin-right: 10px;}
-.configuracion .s1 {margin-left: 4px; margin-right: 4px; margin-top: 8px; padding: 2px;}
-.configuracion .s2 {margin-left: 4px; margin-right: 4px; padding: 2px;}
-.configuracion .s3 {margin-left: 4px; margin-right: 4px; padding: 2px;}
-.configuracion .s4 {margin-left: 4px; margin-right: 4px; padding: 2px;}
-.configuracion .txt {margin: 4px; width: 318px;}
+.configuracion .cb1, .cb2, .cb3 {margin-left: 4px; margin-right: 10px;}
+.configuracion .s1, .s2, .s3 {margin-left: 4px; margin-right: 4px; margin-top: 8px; padding: 2px;}
 
-.configuracion .cb1:hover,.cb2:hover,.cb3:hover,.cb4:hover,.s1:hover,.s2:hover,.s3:hover,.s4:hover {
+.configuracion .cb1:hover,
+.cb2:hover,
+.cb3:hover,
+.s1:hover,
+.s2:hover,
+.s3:hover {
     background-color: #798499;
     border-radius: 0.25rem;
 }
@@ -126,4 +124,10 @@ body {
     left: 35%;
     width: max-content;
     margin: auto;
+}
+
+h4 {
+    align-self: center;
+    padding-top: 5px;
+    margin-top: 5px;
 }
