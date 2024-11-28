@@ -6,7 +6,7 @@ export const List2 = (lista) => {
     let error;
 
     const EvaluarContent = () => {
-        const titles = ["Cliente","Teléfono1"];
+        const titles = ["CLIENTE","TELÉFONO1"];
 
         if (lista[0][0] !== titles[0] ||
             lista[0][1] !== titles[1]) {
