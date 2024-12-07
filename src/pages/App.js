@@ -13,15 +13,14 @@ import ResultsTable from "./ResultsTable";
 
 function App() {
   const [isOpenForm, openModalForm, closeModalForm] = useModal(false);
-  const {viewpdf, ViewPdf} = useSendingContext();
+  const {url, viewpdf, Url, ViewPdf} = useSendingContext();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
-  const URL = process.env.REACT_APP_URL;
-  let status = URL + "status";
-
+  let status = url + "status";
+  
   React.useEffect(() => {
     async function fetchData() {
       setLoading(true);
@@ -167,11 +166,36 @@ function App() {
                   </div>
                 </ul>
               </li>
-              <li className="menu__item">
-                <label
-                  className="menu__link"
-                  id="login">Check connection...
-                </label>
+              <li
+                className="menu__item menu__item--show"
+                id="Configuracion">
+                  <label
+                    className="menu__link"
+                    id="login">Check connection...
+                    <img
+                      src={arrow}
+                      className="menu__arrow"
+                      alt="arrow"
+                    />
+                  </label>
+                  <ul className="menu__nesting">
+                  <div className="configuracion">
+                    <h4>Conectar con el servidor</h4>
+                    <hr/>
+                    <label
+                      className="s4"
+                      htmlFor="t4">
+                      <input
+                        className="cb4"
+                        id="t4"
+                        type="text"
+                        name="t4"
+                        placeholder="52.14.97.220"
+                        onChange={(e) => {Url("http://" + e.target.value + "/")}}
+                      />
+                    </label>
+                  </div>
+                </ul>
               </li>
             </ul>
           </section>

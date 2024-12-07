@@ -1,5 +1,6 @@
 import "../styles/Formulario.css";
 import "../styles/Attachment.css";
+import { useSendingContext } from "../hooks/useSendContext";
 import React, { useState } from "react";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -11,10 +12,10 @@ const Formulario1 = () => {
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
-  const URL = process.env.REACT_APP_URL;
-  let send = URL + "send";
-  let upload = URL + "upload";
-  let del = URL + "delete/";
+  const url = useSendingContext();
+  let send = url + "send";
+  let upload = url + "upload";
+  let del = url + "delete/";
 
   React.useEffect(() => {
     var input=  document.getElementById('teléfono');

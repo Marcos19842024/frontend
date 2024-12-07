@@ -22,11 +22,10 @@ const Formulario3 = () => {
   const [showIb, setShowIb] = useState(true);
   const [imo, setImo] = useState(false);
   const [msjo, setMsjo] = useState("");
-  const {addNewSend, addNewNotSend} = useSendingContext();
-  const URL = process.env.REACT_APP_URL;
-  let send = URL + "send";
-  let upload = URL + "upload";
-  let del = URL + "delete/";
+  const {url, addNewSend, addNewNotSend} = useSendingContext();
+  let send = url + "send";
+  let upload = url + "upload";
+  let del = url + "delete/";
 
   React.useEffect(() => {
     const input = document.getElementById('inputfile');
