@@ -22,7 +22,7 @@ function App() {
   const [status, setStatus] = useState(url);
   
   React.useEffect(() => {
-    setStatus(url + "status");
+    setStatus(`${url}status`);
     async function fetchData() {
       setLoading(true);
       const label = document.getElementById("login");
