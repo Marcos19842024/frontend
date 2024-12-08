@@ -22,14 +22,8 @@ const Formulario2 = () => {
   const [showIb, setShowIb] = useState(true);
   const [msjo, setMsjo] = useState("");
   const {url, addNewSend, addNewNotSend} = useSendingContext();
-  const [send, setSend] = useState();
-  const [upload, setUpload] = useState();
-  const [del, setDel] = useState();
 
   React.useEffect(() => {
-    setSend(`${url}send`);
-    setUpload(`${url}upload`);
-    setDel(`${url}delete/`);
     const input = document.getElementById('inputfile');
     setLoading1(true);
     try {
@@ -64,7 +58,7 @@ const Formulario2 = () => {
       "phone": `521${clientes[index].Telefono}`,
       "pathtofiles": archivos,
     };
-    await fetch(send, {
+    await fetch(url + "send", {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -97,7 +91,7 @@ const Formulario2 = () => {
     for(let i = 0; i < files.length; i++) {
       formData.append('files', files[i]);
     }
-    fetch(upload, {
+    fetch(url + "upload", {
       method: 'POST',
       body: formData
     }).then(res => res.json()).then(res => {
@@ -185,7 +179,7 @@ const Formulario2 = () => {
     const crossElem = document.createElement("span");
     crossElem.innerHTML = "&#215;";
     crossElem.addEventListener("click",async () => {
-      fetch(del + filename, {
+      fetch(url + "delete/" + filename, {
         method: 'DELETE'
       }).then(res => res.json()).then(res => {
         if(res.err) {

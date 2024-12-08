@@ -12,21 +12,15 @@ const Formulario1 = () => {
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
-  const url = useSendingContext();
-  const [send, setSend] = useState();
-  const [upload, setUpload] = useState();
-  const [del, setDel] = useState();
-
+  const {url} = useSendingContext();
+  
   React.useEffect(() => {
-    setSend(`${url}send`);
-    setUpload(`${url}upload`);
-    setDel(`${url}delete/`);
     var input=  document.getElementById('teléfono');
     input.addEventListener('input',function() {
     if (this.value.length > 10)
       this.value = this.value.slice(0,10);
     })
-  },[url])
+  },[])
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -40,7 +34,7 @@ const Formulario1 = () => {
       "phone": `521${inputtelefono.value}`,
       "pathtofiles": archivos,
     };
-    await fetch(send, {
+    await fetch(url + "send", {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -68,7 +62,7 @@ const Formulario1 = () => {
     for(let i = 0; i < files.length; i++) {
       formData.append('files', files[i]);
     }
-    fetch(upload, {
+    fetch(url + "upload", {
       method: 'POST',
       body: formData
     }).then(res => res.json()).then(res => {
@@ -156,7 +150,7 @@ const Formulario1 = () => {
     const crossElem = document.createElement("span");
     crossElem.innerHTML = "&#215;";
     crossElem.addEventListener("click",async () => {
-      fetch(del + filename, {
+      fetch(url + "delete/" + filename, {
         method: 'DELETE'
       }).then(res => res.json()).then(res => {
         if(res.err) {

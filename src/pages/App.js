@@ -19,14 +19,12 @@ function App() {
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
-  const [status, setStatus] = useState(url);
   
   React.useEffect(() => {
-    setStatus(`${url}status`);
     async function fetchData() {
       setLoading(true);
       const label = document.getElementById("login");
-      await fetch(status, {
+      await fetch(url + "status", {
         method: 'GET'
       }).then(res => res.json()).then((res) => {
         if(!res.err) {
@@ -43,7 +41,7 @@ function App() {
       setLoading(false);
     }
     fetchData();
-  },[status, url]);
+  },[url]);
 
   return (
     <>
