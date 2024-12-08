@@ -27,9 +27,9 @@ const Formulario2 = () => {
   const [del, setDel] = useState(url);
 
   React.useEffect(() => {
-    setSend(url + "send");
-    setUpload(url + "upload");
-    setDel(url + "delete/");
+    setSend(`${url}send`);
+    setUpload(`${url}upload`);
+    setDel(`${url}delete/`);
     const input = document.getElementById('inputfile');
     setLoading1(true);
     try {

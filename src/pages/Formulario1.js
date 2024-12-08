@@ -13,14 +13,14 @@ const Formulario1 = () => {
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
   const url = useSendingContext();
-  const [send, setSend] = useState(url);
-  const [upload, setUpload] = useState(url);
-  const [del, setDel] = useState(url);
+  const [send, setSend] = useState();
+  const [upload, setUpload] = useState();
+  const [del, setDel] = useState();
 
   React.useEffect(() => {
-    setSend(url + "send");
-    setUpload(url + "upload");
-    setDel(url + "delete/");
+    setSend(`${url}send`);
+    setUpload(`${url}upload`);
+    setDel(`${url}delete/`);
     var input=  document.getElementById('teléfono');
     input.addEventListener('input',function() {
     if (this.value.length > 10)
