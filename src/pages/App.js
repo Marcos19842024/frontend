@@ -19,7 +19,7 @@ function App() {
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState(url);
   
   React.useEffect(() => {
     setStatus(url + "status");
