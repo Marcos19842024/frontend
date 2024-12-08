@@ -179,7 +179,7 @@ function App() {
                   </label>
                   <ul className="menu__nesting">
                   <div className="configuracion">
-                    <h4>Conectar con el servidor</h4>
+                    <h4>Ip del servidor</h4>
                     <hr/>
                     <label
                       className="s4"

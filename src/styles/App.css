@@ -96,11 +96,9 @@ body {
 .configuracion .cb1:hover,
 .cb2:hover,
 .cb3:hover,
-.cb4:hover,
 .s1:hover,
 .s2:hover,
-.s3:hover,
-.s4:hover {
+.s3:hover {
     background-color: #798499;
     border-radius: 0.25rem;
 }
