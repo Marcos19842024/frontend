@@ -13,17 +13,20 @@ const Formulario1 = () => {
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
   const url = useSendingContext();
-  let send = url + "send";
-  let upload = url + "upload";
-  let del = url + "delete/";
+  const [send, setSend] = useState();
+  const [upload, setUpload] = useState();
+  const [del, setDel] = useState();
 
   React.useEffect(() => {
+    setSend(url + "send");
+    setUpload(url + "upload");
+    setDel(url + "delete/");
     var input=  document.getElementById('teléfono');
     input.addEventListener('input',function() {
     if (this.value.length > 10)
       this.value = this.value.slice(0,10);
     })
-  },[])
+  },[url])
 
   const handleSubmit = async e => {
     e.preventDefault();

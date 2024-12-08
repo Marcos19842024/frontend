@@ -19,9 +19,10 @@ function App() {
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
-  let status = url + "status";
+  const [status, setStatus] = useState();
   
   React.useEffect(() => {
+    setStatus(url + "status");
     async function fetchData() {
       setLoading(true);
       const label = document.getElementById("login");
@@ -42,7 +43,7 @@ function App() {
       setLoading(false);
     }
     fetchData();
-  },[status]);
+  },[status, url]);
 
   return (
     <>

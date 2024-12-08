@@ -22,11 +22,14 @@ const Formulario2 = () => {
   const [showIb, setShowIb] = useState(true);
   const [msjo, setMsjo] = useState("");
   const {url, addNewSend, addNewNotSend} = useSendingContext();
-  let send = url + "send";
-  let upload = url + "upload";
-  let del = url + "delete/";
+  const [send, setSend] = useState();
+  const [upload, setUpload] = useState();
+  const [del, setDel] = useState();
 
   React.useEffect(() => {
+    setSend(url + "send");
+    setUpload(url + "upload");
+    setDel(url + "delete/");
     const input = document.getElementById('inputfile');
     setLoading1(true);
     try {
@@ -48,7 +51,7 @@ const Formulario2 = () => {
       setTimeout(() => setError1(null),5000);
     };
     setLoading1(false);
-  },[showIb])
+  },[showIb,url])
 
   const handleSubmit = async e => {
     e.preventDefault();
