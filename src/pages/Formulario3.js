@@ -224,9 +224,9 @@ const Formulario3 = () => {
     let msj
 
     if (imo) {
-      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Baalak', le informa que ${clientes[index].Mensaje}\n\n${msjo}`;
+      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Animalia, le informa que ${clientes[index].Mensaje}\n\n${msjo}`;
     } else {
-      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Baalak', le informa que ${clientes[index].Mensaje}`;
+      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Animalia, le informa que ${clientes[index].Mensaje}`;
     }
     return msj
   }
