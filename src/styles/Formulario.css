@@ -39,13 +39,15 @@ input[type="submit"] {
   transition: border-color 0.25s;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, button:hover {
   border-color: #fff;
   background: #1A202C;
   color: #fff;
 }
 
 input[type="submit"]:focus,
+button:focus,
+button:focus-visible,
 input[type="submit"]:focus-visible {
   outline: 5px auto -webkit-focus-ring-color;
 }

@@ -1,4 +1,5 @@
 import "../styles/App.css";
+import "../styles/Attachment.css";
 import arrow from "../assets/arrow.svg";
 import React, { useState } from "react";
 import { useModal } from "../hooks/useModal";
@@ -180,19 +181,30 @@ function App() {
                   <ul className="menu__nesting">
                   <div className="configuracion">
                     <h4>Ip del servidor</h4>
-                    <hr/>
-                    <label
-                      className="s4"
-                      htmlFor="t4">
-                      <input
-                        className="cb4"
-                        id="t4"
-                        type="text"
-                        name="t4"
-                        placeholder="52.14.97.220"
-                        onChange={(e) => {Url("http://" + e.target.value + "/")}}
-                      />
-                    </label>
+                    <div
+                      className="showfilebox">
+                      <div className="left">
+                        <label
+                          className="s4"
+                          htmlFor="t4">
+                          <input
+                            className="cb4"
+                            id="t4"
+                            type="text"
+                            name="t4"
+                            placeholder="52.14.97.220"
+                            style={{width: "100px"}}
+                          />
+                          <button
+                            class="fa fa-exchange"
+                            onClick={() => {
+                              let input = document.getElementById("t4")
+                              Url("http://" + input.value + "/")
+                            }}>
+                          </button>
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </ul>
               </li>
