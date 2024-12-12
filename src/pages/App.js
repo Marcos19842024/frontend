@@ -29,7 +29,7 @@ function App() {
         method: 'GET'
       }).then(res => res.json()).then((res) => {
         if(!res.err) {
-          label.innerHTML = res.statusText + " to Baalak'";
+          label.innerHTML = res.statusText + " to Animalia";
         } else {
           label.innerHTML = "Desconectado";
           setError(`Error ${res.status}: ${res.statusText}`);
