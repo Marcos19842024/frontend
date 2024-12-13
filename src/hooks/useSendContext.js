@@ -6,7 +6,7 @@ export const useSendingContext = () => useContext(sendingContext);
 
 export const SendingProvider = ({ children }) => {
   const [viewpdf, setView] = useState(false);
-  const [url, setUrl] = useState("http://52.14.97.220/");
+  const [url, setUrl] = useState("");
   const [sending, setSending] = useState([]);
   const [notsending, setNotSending] = useState([]);
   const ViewPdf = (view) => setView(view);

@@ -20,29 +20,28 @@ function App() {
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
+  const center = "Baalak'";
   
   React.useEffect(() => {
     async function fetchData() {
       setLoading(true);
       const label = document.getElementById("login");
-      await fetch(url + "status", {
+      await fetch(url + "status/" + center, {
         method: 'GET'
       }).then(res => res.json()).then((res) => {
-        if(!res.err) {
-          label.innerHTML = res.statusText + " to Animalia";
-        } else {
-          label.innerHTML = "Desconectado";
+        if(res.err) {
           setError(`Error ${res.status}: ${res.statusText}`);
         }
+        label.innerHTML = res.statusText;
       }).catch((err) => {
-        label.innerHTML = "Desconectado";
+        label.innerHTML = "Offline";
         setError(`Error ${err}`);
       });
       setTimeout(() => setError(null),5000);
       setLoading(false);
     }
     fetchData();
-  },[url]);
+  },[center, url]);
 
   return (
     <>
@@ -88,9 +87,9 @@ function App() {
                 <Modal
                   isOpen={isOpenForm}
                   closeModal={closeModalForm}>
-                  {libre && <Formulario1/>}
-                  {notificacion && <Formulario2/>}
-                  {recordatorios && <Formulario3/>}
+                  {libre && <Formulario1 center={center}/>}
+                  {notificacion && <Formulario2 center={center}/>}
+                  {recordatorios && <Formulario3 center={center}/>}
                 </Modal>
               </li>
               <li
@@ -192,7 +191,7 @@ function App() {
                             id="t4"
                             type="text"
                             name="t4"
-                            placeholder="52.14.97.220"
+                            placeholder="Enter ip..."
                             style={{width: "100px"}}
                           />
                           <button

@@ -8,7 +8,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import arrow from "../assets/arrow.svg";
 
-const Formulario3 = () => {
+const Formulario3 = ({center}) => {
   const [clientes, setClientes] = useState();
   const [index, setIndex] = useState(0);
   const [info, setInfo] = useState();
@@ -59,7 +59,7 @@ const Formulario3 = () => {
       "phone": `521${clientes[index].Telefono}`,
       "pathtofiles": archivos,
     };
-    await fetch(url + "send", {
+    await fetch(url + "send/" + center, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -224,9 +224,9 @@ const Formulario3 = () => {
     let msj
 
     if (imo) {
-      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Animalia, le informa que ${clientes[index].Mensaje}\n\n${msjo}`;
+      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria ${center}, le informa que ${clientes[index].Mensaje}\n\n${msjo}`;
     } else {
-      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria Animalia, le informa que ${clientes[index].Mensaje}`;
+      msj = `Hola ${clientes[index].Nombre}.\n\nLa clínica veterinaria ${center}, le informa que ${clientes[index].Mensaje}`;
     }
     return msj
   }

@@ -6,7 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import arrow from "../assets/arrow.svg";
 
-const Formulario1 = () => {
+const Formulario1 = ({center}) => {
   const [error1, setError1] = useState(null);
   const [error2, setError2] = useState(null);
   const [loading1, setLoading1] = useState(false);
@@ -34,7 +34,7 @@ const Formulario1 = () => {
       "phone": `521${inputtelefono.value}`,
       "pathtofiles": archivos,
     };
-    await fetch(url + "send", {
+    await fetch(url + "send/" + center, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
