@@ -1,5 +1,4 @@
 import "../styles/Formulario.css";
-import "../styles/Attachment.css";
 import React, { useState } from "react";
 import { List } from "../components/List";
 import { useSendingContext } from "../hooks/useSendContext";
@@ -8,7 +7,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import arrow from "../assets/arrow.svg";
 
-const Formulario3 = ({center}) => {
+const Formulario3 = () => {
   const [clientes, setClientes] = useState();
   const [index, setIndex] = useState(0);
   const [info, setInfo] = useState();
@@ -22,7 +21,7 @@ const Formulario3 = ({center}) => {
   const [showIb, setShowIb] = useState(true);
   const [imo, setImo] = useState(false);
   const [msjo, setMsjo] = useState("");
-  const {url, addNewSend, addNewNotSend} = useSendingContext();
+  const {center,url, addNewSend, addNewNotSend} = useSendingContext();
 
   React.useEffect(() => {
     const input = document.getElementById('inputfile');
@@ -59,7 +58,7 @@ const Formulario3 = ({center}) => {
       "phone": `521${clientes[index].Telefono}`,
       "pathtofiles": archivos,
     };
-    await fetch(url + "send/" + center, {
+    await fetch(`${url}send/${center}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -92,7 +91,7 @@ const Formulario3 = ({center}) => {
     for(let i = 0; i < files.length; i++) {
       formData.append('files', files[i]);
     }
-    fetch(url + "upload", {
+    fetch(`${url}upload`, {
       method: 'POST',
       body: formData
     }).then(res => res.json()).then(res => {
@@ -180,7 +179,7 @@ const Formulario3 = ({center}) => {
     const crossElem = document.createElement("span");
     crossElem.innerHTML = "&#215;";
     crossElem.addEventListener("click",async () => {
-      fetch(url + "delete/" + filename, {
+      fetch(`${url}delete/${filename}`, {
         method: 'DELETE'
       }).then(res => res.json()).then(res => {
         if(res.err) {
@@ -364,10 +363,10 @@ const Formulario3 = ({center}) => {
                 readOnly>
               </textarea>
               <label
-                className="s1"
+                className="lbl"
                 htmlFor="Imo">
                 <input
-                  className="cb1"
+                  className="cbx"
                   id="Imo"
                   type="checkbox"
                   name="Imo"

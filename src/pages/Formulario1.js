@@ -1,18 +1,17 @@
 import "../styles/Formulario.css";
-import "../styles/Attachment.css";
 import { useSendingContext } from "../hooks/useSendContext";
 import React, { useState } from "react";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import arrow from "../assets/arrow.svg";
 
-const Formulario1 = ({center}) => {
+const Formulario1 = () => {
   const [error1, setError1] = useState(null);
   const [error2, setError2] = useState(null);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
-  const {url} = useSendingContext();
+  const {center,url} = useSendingContext();
   
   React.useEffect(() => {
     var input=  document.getElementById('teléfono');
@@ -34,7 +33,7 @@ const Formulario1 = ({center}) => {
       "phone": `521${inputtelefono.value}`,
       "pathtofiles": archivos,
     };
-    await fetch(url + "send/" + center, {
+    await fetch(`${url}send/${center}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -62,7 +61,7 @@ const Formulario1 = ({center}) => {
     for(let i = 0; i < files.length; i++) {
       formData.append('files', files[i]);
     }
-    fetch(url + "upload", {
+    fetch(`${url}upload`, {
       method: 'POST',
       body: formData
     }).then(res => res.json()).then(res => {
@@ -150,7 +149,7 @@ const Formulario1 = ({center}) => {
     const crossElem = document.createElement("span");
     crossElem.innerHTML = "&#215;";
     crossElem.addEventListener("click",async () => {
-      fetch(url + "delete/" + filename, {
+      fetch(`${url}delete/${filename}`, {
         method: 'DELETE'
       }).then(res => res.json()).then(res => {
         if(res.err) {
