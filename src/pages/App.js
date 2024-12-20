@@ -20,11 +20,11 @@ function App() {
   const [libre, setLibre] = useState(true);
   const [notificacion, setNotificacion] = useState(false);
   const [recordatorios, setRecordatorios] = useState(false);
+  const [status, setStatus] = useState("Check connection...");
 
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading0(true);
-    const label = document.getElementById("login");
     await fetch(`${url}status/${center}`, {
       method: 'GET'
     }).then(res => res.json()).then((res) => {
@@ -32,7 +32,7 @@ function App() {
         setError0(`Error ${res.status}: ${res.statusText}`);
       } else {
         Start(false);
-        label.innerHTML = res.statusText;
+        setStatus(res.statusText);
       }
     }).catch((err) => {
       setError0(`Error ${err}`);
@@ -205,7 +205,7 @@ function App() {
                     id="Configuracion">
                       <label
                         className="menu__link"
-                        id="login">Check connection...
+                        id="login">{status}
                         <img
                           src={arrow}
                           className="menu__arrow"
