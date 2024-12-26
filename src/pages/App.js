@@ -203,16 +203,16 @@ function App() {
                   <li
                     className="menu__item menu__item--show"
                     id="Configuracion">
-                      <label
-                        className="menu__link"
-                        id="login">{status}
-                        <img
-                          src={arrow}
-                          className="menu__arrow"
-                          alt="arrow"
-                        />
-                      </label>
-                      <ul className="menu__nesting">
+                    <label
+                      className="menu__link"
+                      id="login">{`${status}`}
+                      <img
+                        src={arrow}
+                        className="menu__arrow"
+                        alt="arrow"
+                      />
+                    </label>
+                    <ul className="menu__nesting">
                       <div className="configuracion">
                         <h4>Ip del servidor</h4>
                         <div

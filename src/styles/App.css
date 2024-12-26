@@ -149,3 +149,20 @@ h4 {
     padding-top: 5px;
     margin-top: 5px;
 }
+
+/*----------
+Media
+------------*/
+
+@media(max-width: 910px) {
+    .style2 {
+       width: 100%;
+       min-height: 70px;
+    }
+
+    .menu__container {
+        display: flex;
+        height: 100%;
+        margin: 0 auto;
+    }
+}
