@@ -150,6 +150,13 @@ h4 {
     margin-top: 5px;
 }
 
+p {
+    font-size: 1.5rem;
+    margin-top: 25px;
+    padding-top: 15px;
+    text-align: center;
+}
+
 /*----------
 Media
 ------------*/

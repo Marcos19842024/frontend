@@ -65,7 +65,7 @@ function App() {
                 />
               </div>
               <button type='submit'>Login</button>
-              <a href={`${url}qr.png`}>Ver qr?</a>
+              <p><a href={`${url}qr.png`}>Ver qr?</a></p>
             </form>
             <div className="loader">
               {loading0 && <Loader />}
