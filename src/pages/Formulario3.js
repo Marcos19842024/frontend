@@ -162,10 +162,13 @@ const Formulario3 = () => {
     const filewrapper = document.getElementById("filewrapper");
     const showfileboxElem = document.createElement("div");
     showfileboxElem.classList.add("showfilebox");
-    showfileboxElem.setAttribute("id", filename);
+    showfileboxElem.id = filename;
     const leftElem = document.createElement("div");
     leftElem.classList.add("left");
-    const filetypeElem = document.createElement("span");
+    const filetypeElem = document.createElement("a");
+    filetypeElem.href = `${url}media/${filename}`;
+    filetypeElem.target = "_blank";
+    filetypeElem.rel = "noopener noreferrer";
     filetypeElem.className = filetype[0];
     filetypeElem.style = filetype[1];
     leftElem.append(filetypeElem);
