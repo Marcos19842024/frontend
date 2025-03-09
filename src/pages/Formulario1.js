@@ -139,7 +139,9 @@ const Formulario1 = () => {
     filetypeElem.className = filetype[0];
     filetypeElem.style = filetype[1];
     leftElem.append(filetypeElem);
-    const filetitleElem = document.createElement("h5");
+    //const filetitleElem = document.createElement("h5");
+    const filetitleElem = document.createElement("a");
+    filetitleElem.setAttribute("href", url + filename);
     filetitleElem.innerHTML = filename;
     leftElem.append(filetitleElem);
     showfileboxElem.append(leftElem);
