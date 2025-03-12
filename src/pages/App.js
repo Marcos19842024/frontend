@@ -203,13 +203,7 @@ function App() {
                     className="menu__item menu__item--show"
                     id="Configuracion">
                     <label
-                      className="menu__link"
-                      id="login">{`${status}`}
-                      <img
-                        src={arrow}
-                        className="menu__arrow"
-                        alt="arrow"
-                      />
+                      className="menu__link">{`${status}`}
                     </label>
                   </li>
                 </ul>
