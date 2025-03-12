@@ -33,7 +33,7 @@ const Formulario1 = () => {
       "phone": `521${inputtelefono.value}`,
       "pathtofiles": archivos,
     };
-    await fetch(`${url}send/${center},${cel}`, {
+    await fetch(`${url}send/${center}/${cel}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

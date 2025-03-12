@@ -25,7 +25,7 @@ function App() {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading0(true);
-    await fetch(`${url}status/${center},${cel}`, {
+    await fetch(`${url}status/${center}/${cel}`, {
       method: 'GET'
     }).then(res => res.json()).then((res) => {
       if(res.err) {
