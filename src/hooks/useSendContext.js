@@ -6,19 +6,20 @@ export const useSendingContext = () => useContext(sendingContext);
 
 export const SendingProvider = ({ children }) => {
   const [center, setCenter] = useState("");
+  const [cel, setCel] = useState("");
   const [start, setStart] = useState(true);
   const [viewpdf, setView] = useState(false);
-  const [url, setUrl] = useState("");
   const [sending, setSending] = useState([]);
   const [notsending, setNotSending] = useState([]);
   const Center = (vet) => setCenter(vet);
+  const Cel = (cel) => setCel(cel);
   const Start = (answer) => setStart(answer);
   const ViewPdf = (view) => setView(view);
-  const Url = (ip) => setUrl(ip);
   const addNewSend = (send) => setSending((prevState) => [...prevState, send]);
   const addNewNotSend = (send) => setNotSending((prevState) => [...prevState, send]);
+  const url = "http://recordatorios.veterinariabaalak.com/";
 
   return (
-    <SendingContextProvider value={{center,start,url,viewpdf,sending,notsending,Center,Start,Url,ViewPdf,addNewSend,addNewNotSend}}>{children}</SendingContextProvider>
+    <SendingContextProvider value={{center,cel,start,url,viewpdf,sending,notsending,Center,Cel,Start,ViewPdf,addNewSend,addNewNotSend}}>{children}</SendingContextProvider>
   );
 };

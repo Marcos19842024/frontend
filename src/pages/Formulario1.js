@@ -11,7 +11,7 @@ const Formulario1 = () => {
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [archivos, setArchivos] = useState([]);
-  const {center,url} = useSendingContext();
+  const {center,cel,url} = useSendingContext();
   
   React.useEffect(() => {
     var input=  document.getElementById('teléfono');
@@ -33,7 +33,7 @@ const Formulario1 = () => {
       "phone": `521${inputtelefono.value}`,
       "pathtofiles": archivos,
     };
-    await fetch(`${url}send/${center}`, {
+    await fetch(`${url}send/${center},${cel}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

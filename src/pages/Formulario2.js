@@ -20,7 +20,7 @@ const Formulario2 = () => {
   const [archivos, setArchivos] = useState([]);
   const [showIb, setShowIb] = useState(true);
   const [msjo, setMsjo] = useState("");
-  const {center,url, addNewSend, addNewNotSend} = useSendingContext();
+  const {center,cel,url, addNewSend, addNewNotSend} = useSendingContext();
 
   React.useEffect(() => {
     const input = document.getElementById('inputfile');
@@ -57,7 +57,7 @@ const Formulario2 = () => {
       "phone": `521${clientes[index].Telefono}`,
       "pathtofiles": archivos,
     };
-    await fetch(`${url}send/${center}`, {
+    await fetch(`${url}send/${center},${cel}`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -200,7 +200,7 @@ const Formulario2 = () => {
   }
 
   function getSelect(select) {
-    for(let i = 1;  index + i <= select.length - 1; i++) {
+    for(let i = 1; index + i <= select.length - 1; i++) {
       if(!select.options[index + i].disabled) {
         select.options[index + i].selected = true;
         select.options[index].setAttribute("disabled","disabled");

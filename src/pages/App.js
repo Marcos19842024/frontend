@@ -14,7 +14,7 @@ import ResultsTable from "./ResultsTable";
 
 function App() {
   const [isOpenForm, openModalForm, closeModalForm] = useModal(false);
-  const {start, center, url, viewpdf, Center, Start, Url, ViewPdf} = useSendingContext();
+  const {start, center, cel, url, viewpdf, Center, Cel, Start, ViewPdf} = useSendingContext();
   const [error0, setError0] = useState(null);
   const [loading0, setLoading0] = useState(false);
   const [libre, setLibre] = useState(true);
@@ -25,7 +25,7 @@ function App() {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading0(true);
-    await fetch(`${url}status/${center}`, {
+    await fetch(`${url}status/${center},${cel}`, {
       method: 'GET'
     }).then(res => res.json()).then((res) => {
       if(res.err) {
@@ -51,7 +51,7 @@ function App() {
               <div className='input-box'>
                 <input
                   type='text'
-                  placeholder='Center'
+                  placeholder='Clínica Veterinaria'
                   onChange={(e) => {Center(e.target.value)}}
                   required
                 />
@@ -59,8 +59,8 @@ function App() {
               <div className='input-box'>
                 <input
                   type='text'
-                  placeholder='Ip'
-                  onChange={(e) => {Url(`http://${e.target.value}/`)}}
+                  placeholder='Teléfono'
+                  onChange={(e) => {Cel(e.target.value)}}
                   required
                 />
               </div>
@@ -132,7 +132,7 @@ function App() {
                     className="menu__item menu__item--show"
                     id="Configuracion">
                     <label
-                      className="menu__link">Configuracion
+                      className="menu__link">Tipo de envío
                       <img
                         src={arrow}
                         className="menu__arrow"
@@ -141,8 +141,6 @@ function App() {
                     </label>
                     <ul className="menu__nesting">
                       <div className="configuracion">
-                        <h4>Tipo de envío</h4>
-                        <hr/>
                         <label
                           className="s1"
                           htmlFor="t1">
@@ -213,34 +211,6 @@ function App() {
                         alt="arrow"
                       />
                     </label>
-                    <ul className="menu__nesting">
-                      <div className="configuracion">
-                        <h4>Ip del servidor</h4>
-                        <div
-                          className="showfilebox">
-                          <div className="left">
-                            <label
-                              className="s4"
-                              htmlFor="t4">
-                              <input
-                                className="cb4"
-                                id="t4"
-                                type="text"
-                                name="t4"
-                                placeholder='Ip'
-                                onChange={(e) => {Url(`http://${e.target.value}/`)}}
-                                required
-                                style={{width: "100px"}}
-                              />
-                              <button
-                                class="fa fa-exchange"
-                                onClick={handleSubmit}>
-                              </button>
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </ul>
                   </li>
                 </ul>
               </section>

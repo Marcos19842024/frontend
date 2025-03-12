@@ -110,7 +110,7 @@ const Docupdf = ({data1,data2}) => {
     return (
         <>
             <Document>
-                <Page size={"A4"} style={styles.page}>
+                <Page size={"Letter"} style={styles.page}>
                     <View style={styles.section}>
                         <Text style={styles.title}>Lista de recordatorios</Text>
                     </View>
