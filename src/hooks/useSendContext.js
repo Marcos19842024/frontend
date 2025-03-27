@@ -17,7 +17,7 @@ export const SendingProvider = ({ children }) => {
   const ViewPdf = (view) => setView(view);
   const addNewSend = (send) => setSending((prevState) => [...prevState, send]);
   const addNewNotSend = (send) => setNotSending((prevState) => [...prevState, send]);
-  const url = "http://recordatorios.veterinariabaalak.com/";
+  const url = "http://animalia.veterinariabaalak.com/";
 
   return (
     <SendingContextProvider value={{center,cel,start,url,viewpdf,sending,notsending,Center,Cel,Start,ViewPdf,addNewSend,addNewNotSend}}>{children}</SendingContextProvider>
